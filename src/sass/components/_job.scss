@@ -1,0 +1,116 @@
+.jobs {
+  margin-bottom: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+  gap: 2rem;
+  overflow: auto;
+  @include dashboardbody;
+}
+
+.job {
+  animation: moveInRight 1s ease-in-out;
+  height: 100%;
+  background-color: $color-grey-light;
+  padding: 1.5rem 2rem;
+
+  border: 1px solid #e4e4e4;
+
+  &__status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h3 {
+      left: 0;
+      display: inline-block;
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      color: #fff;
+      text-transform: uppercase;
+    }
+
+    &--to-do,
+    &--progress,
+    &--done {
+      margin-bottom: 1rem;
+    }
+
+    &--to-do {
+      background-color: $color-grey-dark;
+    }
+    &--progress {
+      background-color: $color-primary-dark;
+    }
+    &--done {
+      background-color: $color-secondary;
+    }
+
+    svg {
+      right: 0;
+    }
+  }
+  &__status-list {
+    padding: 1.6rem;
+    margin-top: 1.5rem;
+    background-color: #fff;
+    border: 1px solid #e4e4e4;
+    box-sizing: border-box;
+    border-radius: 8px;
+    display: flex;
+    justify-content:space-around;
+    row-gap: 1.2rem;
+    min-height: 8.7rem;
+
+    
+
+    &--priority,
+    &--text {
+      align-self: center;
+      justify-self: start;
+      margin-right: 1rem;
+      grid-row: 1/-1;
+    }
+
+    &--text {
+      display: block;
+
+      p {
+        margin-top: 1rem;
+      }
+    }
+
+    &--delete-info{
+          display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    } 
+
+    &--delete,
+    &--info {
+      display: none;
+    }
+
+    &:hover &--delete,
+    &:hover &--info {
+      display: block;
+    }
+  }
+
+  &__status-add {
+    margin-top: 3.2rem;
+    &--btn {
+      display: flex;
+      align-content: center;
+      text-transform: uppercase;
+
+      h3 {
+        color: $color-primary;
+      }
+      svg {
+        fill: $color-primary;
+        margin-right: 0.8rem;
+      }
+    }
+  }
+}

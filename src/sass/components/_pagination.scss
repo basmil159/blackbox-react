@@ -1,0 +1,38 @@
+.pagination {
+  font-size: $default-font-size;
+  display: flex;
+  justify-content: space-between;
+  margin: 2.2rem 0;
+  color: $color-grey-dark;
+
+  &__no {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 2.7rem);
+    width: 50%;
+    justify-content: end;
+    column-gap: 2rem;
+
+    &--btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 2.4rem;
+      width: 2.7rem;
+      background-color: $color-white;
+      text-align: center;
+      border: 0.4px solid #dadada;
+      box-sizing: border-box;
+      border-radius: 2px;
+
+      &:not(:last-child) {
+        margin-right: 2.3rem;
+      }
+    }
+
+    &--btn:hover,
+    &--btn.active {
+      background-color: $color-primary-light-2;
+      border-color: $color-primary;
+    }
+  }
+}
