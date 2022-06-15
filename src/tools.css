@@ -1,0 +1,163 @@
+/* Tools page style section */
+
+.tools {
+  width: 100%;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(2, max-content);
+  overflow-y: auto;
+  overflow-x: hidden;
+  justify-content: center;
+  margin: 1rem;
+}
+@media only screen and (max-width: 37.5em) {
+  .tools {
+    margin: 0;
+  }
+}
+.tools__checkbox,
+.tools__checkbox--checked {
+  background-color: #f0f0f0;
+  height: 2.4rem;
+  width: 2.4rem;
+  align-items: center;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+}
+.tools__checkbox svg,
+.tools__checkbox--checked svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: none;
+  transform: translate(-50%, -50%);
+}
+.tools__checkbox--checked svg {
+  display: block;
+}
+
+/* ****************** Table ****************** */
+/* ****************** Table ****************** */
+
+.table {
+  width: 100%;
+  height: fit-content;
+  border-collapse: collapse;
+  background-color: #fff;
+}
+.table__head {
+  margin-top: 3rem;
+  width: 100vw;
+  animation: moveInUp 1s ease-in-out;
+}
+.table__head--filter {
+  display: flex;
+  justify-content: space-around;
+  white-space: nowrap;
+}
+.table__head--filter svg {
+  margin-left: 2rem;
+}
+.table td {
+  animation: moveInRightRough 1s ease-in-out;
+  border: 1px solid #f0f0f0;
+}
+.table td a {
+  color: #0072bc;
+  display: inline-block;
+}
+.table td svg {
+  fill: #747474;
+}
+.table th,
+.table td {
+  padding: 1.35rem;
+  text-align: center;
+  font-size: 1.6rem;
+  word-break: break-all;
+  transition: transform 0.2s ease;
+}
+@media only screen and (max-width: 56.25em) {
+  .table th,
+  .table td {
+    padding: 1.35rem 0.2rem;
+    word-spacing: -1px;
+    letter-spacing: -0.5px;
+    font-size: 1.15rem;
+  }
+}
+@media only screen and (max-width: 37.5em) {
+  .table th,
+  .table td {
+    font-size: 1rem;
+    padding: 1.35rem 0.1rem;
+  }
+}
+.table th {
+  position: sticky;
+  text-align: center;
+  text-transform: capitalize;
+  z-index: 1;
+  word-break: keep-all;
+  top: -0.1rem;
+  background-color: #d6e9f5;
+}
+.table tr:nth-child(even) {
+  background-color: #fafafa;
+}
+.table tbody tr:hover {
+  background-color: #e4e4e4;
+}
+.table tbody tr:hover td {
+  color: #0072bc;
+  transform: scale(1.05);
+  z-index: 1;
+  margin-top: -1rem;
+}
+.table tbody tr:hover svg {
+  fill: #0072bc;
+}
+
+/* ****************** pagination ****************** */
+/* ****************** pagination ****************** */
+
+.pagination {
+  font-size: 1.6rem;
+  display: flex;
+  justify-content: space-between;
+  margin: 2.2rem 0;
+  color: #a0a0a0;
+}
+.pagination__no {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 2.7rem);
+  width: 50%;
+  justify-content: end;
+  column-gap: 2rem;
+}
+.pagination__no--btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.4rem;
+  width: 2.7rem;
+  background-color: #fff;
+  text-align: center;
+  border: 0.4px solid #dadada;
+  box-sizing: border-box;
+  border-radius: 2px;
+}
+.pagination__no--btn:not(:last-child) {
+  margin-right: 2.3rem;
+}
+.pagination__no--btn:hover,
+.pagination__no--btn.active {
+  background-color: #e6f5ff;
+  border-color: #0072bc;
+}
+
+.pagination__no input:checked ~ .pagination__no--btn {
+  color: #0072bc !important;
+}

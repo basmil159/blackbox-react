@@ -1,0 +1,80 @@
+.table {
+  width: 100%;
+  height: fit-content;
+  border-collapse: collapse;
+  background-color: #fff;
+
+  &__head {
+    margin-top: 3rem;
+    width: 100vw;
+    animation: moveInUp 1s ease-in-out;
+
+    &--filter {
+      display: flex;
+      justify-content: space-around;
+      white-space: nowrap;
+
+      svg {
+        margin-left: 2rem;
+      }
+    }
+  }
+
+  td {
+    animation: moveInRightRough 1s ease-in-out;
+    border: 1px solid $color-grey-light-2;
+
+    a {
+      color: $color-primary;
+      display: inline-block;
+    }
+    svg {
+      fill: $color-grey-dark-2;
+    }
+  }
+  th,
+  td {
+    padding: 1.35rem;
+    text-align: center;
+    font-size: $default-font-size;
+
+    word-break: break-all;
+    transition: transform 0.2s ease;
+    @include respond(tab-port) {
+      padding: 1.35rem 0.2rem;
+      word-spacing: -1px;
+      letter-spacing: -0.5px;
+      font-size: 1.15rem;
+    }
+    @include respond(phone) {
+      font-size: 1rem;
+      padding: 1.35rem 0.1rem;
+    }
+  }
+  th {
+    position: sticky;
+    text-align: center;
+    text-transform: capitalize;
+    z-index: 1;
+    word-break: keep-all;
+    top: -0.1rem;
+    background-color: $color-primary-light;
+  }
+
+  tr:nth-child(even) {
+    background-color: $color-grey-light;
+  }
+
+  tbody tr:hover {
+    background-color: $color-grey-light-3;
+    td {
+      color: $color-primary;
+      transform: scale(1.05);
+      z-index: 1;
+      margin-top: -1rem;
+    }
+    svg {
+      fill: $color-primary;
+    }
+  }
+}

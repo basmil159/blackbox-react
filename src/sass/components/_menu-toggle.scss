@@ -1,0 +1,88 @@
+.toggle {
+  &__sidebar {
+    @include sidebar-toggle;
+    z-index: 1;
+    display: none;
+    align-items: center;
+    justify-content: end;
+    text-align: end;
+    animation: moveInLeft 1s ease-in-out;
+    &:hover {
+      color: #0072bc;
+    }
+
+    @include respond(tab-land) {
+      display: flex;
+      top: 0;
+      right: 50%;
+      transform: translate(20%, 0%);
+      box-shadow: none;
+      height: 5rem;
+      width: 5rem;
+    }
+
+    @include respond(tab-port) {
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 5px 5px 6px #0000002e;
+      padding: 0px 1.2rem;
+      height: 5rem;
+      width: 5rem;
+      top: 8rem;
+      transform: none;
+      right: -4.5rem;
+      border-radius: 0 50% 50% 0;
+
+      &:hover {
+        border: 1px solid $color-primary;
+        box-shadow: none;
+        border-left: none;
+        background: $color-white;
+        box-shadow: 5px 5px 6px #0072bc1a;
+      }
+    }
+
+    span {
+      animation: 1s toggleLeft 1s ease-in-out infinite;
+    }
+  }
+
+  &__navigation {
+    @include sidebar-toggle;
+    display: none;
+    right: 2rem;
+    top: 0rem;
+  }
+}
+@include respond(tab-port) {
+  .sidebar__checkbox:checked ~ .navigation {
+    position: absolute;
+    z-index: 1;
+    margin: 0;
+    width: fit-content !important;
+    height: calc(100vh - 8rem);
+    background-color: #fff;
+    box-shadow: 0px 4px 5px #0000001a;
+  }
+}
+
+@include respond(tab-land) {
+  .sidebar__checkbox:checked ~ .navigation .toggle__navigation {
+    display: block;
+  }
+  .sidebar__checkbox:checked ~ .toggle__sidebar {
+    display: none;
+  }
+
+  .sidebar__checkbox:checked ~ .navigation {
+    transform: translate(0%, 0);
+  }
+
+  .sidebar__checkbox:checked ~ .navigation .navigation__nav--hide-on-tab {
+    display: block !important;
+    opacity: 1;
+    animation: moveInRight 0.8s ease;
+  }
+  .sidebar__checkbox:checked ~ .navigation .navigation__nav {
+    animation: moveInRight 0.8s ease;
+  }
+}

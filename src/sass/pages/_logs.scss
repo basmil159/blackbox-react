@@ -1,0 +1,15 @@
+.logs {
+  @include table-page;
+
+  @include dashboardbody;
+
+  &__message {
+    display: flex;
+    justify-content: space-between;
+    word-break: keep-all;
+    a {
+      white-space: nowrap;
+      margin-left: 0.5rem;
+    }
+  }
+}

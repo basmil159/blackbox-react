@@ -1,0 +1,110 @@
+.navigation {
+  animation: moveInLeft 1s ease-in-out;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0 2px;
+  @include respond(tab-port) {
+    transform: translate(-500%, 0);
+    transition: 0.3s transform ease;
+  }
+
+  &:hover {
+    background-color: #fff;
+  }
+
+  .line {
+    height: 1px;
+    background-color: #e3e3e3;
+    margin-top: 2rem;
+  }
+
+  &__nav {
+    list-style: none;
+    width: 100%;
+    margin-top: 2rem;
+
+    #auto-detect:checked ~ &--btn .off {
+      display: block !important;
+    }
+    #auto-detect:checked ~ &--btn .on {
+      display: none;
+    }
+    #auto-detect:checked ~ &--btn span {
+      color: #747474;
+    }
+
+    @include respond(tab-land) {
+      &--hide-on-tab {
+        display: none;
+        opacity: 0;
+      }
+    }
+
+    li {
+      position: relative;
+      white-space: nowrap;
+      margin: 2rem 0;
+      padding: 0.8rem 1rem;
+      transition: color, transform 0.45s ease-in-out;
+
+      @include respond(tab-land) {
+        padding: 0.8rem 2rem;
+      }
+      &:not(:last-child) {
+        svg {
+          margin-right: 1rem;
+        }
+      }
+
+      &:last-child {
+        color: $color-primary;
+        label span {
+          margin-right: 1.3rem;
+        }
+      }
+
+      svg {
+        fill: #747474;
+      }
+
+      svg.off{
+        display: none;
+      }
+      
+      &:hover {
+        color: $color-primary;
+        border-radius: 50px 0 0 50px;
+        text-align: center;
+
+        svg {
+          fill: $color-primary;
+        }
+
+        &:not(:last-child)::before {
+          content: "";
+          display: block;
+          position: absolute;
+          right: 0;
+          width: 0.4rem;
+          height: 3.2rem;
+          background: $color-primary;
+          border-radius: 0px 3px 3px 0px;
+          transform: matrix(-1, 0, 0, 1, 0, 0);
+        }
+      }
+    }
+
+    &--elements,
+    &--btn {
+      color: inherit;
+      display: flex;
+      text-decoration: none;
+      flex-wrap: nowrap;
+      align-items: center;
+      cursor: pointer;
+    }
+  }
+}

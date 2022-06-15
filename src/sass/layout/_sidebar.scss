@@ -1,0 +1,15 @@
+.sidebar {
+  left: 0;
+  position: relative;
+  min-height: calc(100vh - 8rem);
+  z-index: 2;
+  background: $color-white;
+  border-right: 1px solid $color-grey-light-2;
+
+
+  @include respond(tab-port) {
+    top: 8rem;
+    position: fixed;
+    width: 0rem;
+  }
+}
