@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import Pagination from "./Pagination";
 import { Table } from "./Table";
 
+// Active tool Components
 const ActiveTool = (props) => {
   return(
     <Table list={props.list} colName={props.colName} />
     );
-  
 };
 
+// In-active tool Components
 const InactiveTool = (props) => {
   return(
     <Table list={props.list} colName={props.colName} />
@@ -61,8 +62,10 @@ export const Tools = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(10);
   
-  const [showActiveTools, setShowActiveTools] = useState(true);
-  const [selectList,setShowSelectList] = useState(Activelist);
+  const [showActiveTools, setShowActiveTools] = useState(true);//to load the specific table list in a button click i.e active/inactive
+  const [selectList,setShowSelectList] = useState(Activelist); //to select the specific list to load in a button click i.e active/inactive
+
+
 console.log(selectList);
   // getting exact number of pages required
   let totalItems = selectList.length;
@@ -86,7 +89,10 @@ console.log(selectList);
   return (
     <section className="tools">
       <div className="tools__topbar">
-        <input type="text" className="search-tool" placeholder="🔍" />
+        
+        <input type="text" className="search-tool" placeholder="🔍" /> {/* Search box*/}
+
+        {/* Active - InActive tool button */}
       <div className="tools__btn">
         <span className={showActiveTools ? 'tools__btn--active show' : 'tools__btn--active'} onClick={()=>{
           setShowActiveTools(true);
@@ -102,11 +108,11 @@ console.log(selectList);
         </span>
       </div>
       </div>
-      {showActiveTools && (<ActiveTool list={currentItems} colName={colName} />)}
-      {!showActiveTools && (
-      <InactiveTool list={currentItems} colName={colName} />) }
       
-
+      {showActiveTools && (<ActiveTool list={currentItems} colName={colName} />)} {/* Loads when clicked Active Button  */}
+      {!showActiveTools && ( <InactiveTool list={currentItems} colName={colName} />) } {/* Loads when clicked In-active Button  */}
+      
+      {/* Pagination Section for both Active and in active table  */}
       {pages > 1 && (
       <Pagination
       lastItem={firstItemindex + pageItem}
