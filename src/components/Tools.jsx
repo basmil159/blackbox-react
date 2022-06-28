@@ -14,8 +14,7 @@ const InactiveTool = (props) => {
   return(
     <Table list={props.list} colName={props.colName} />
     );
-  
-};
+}; 
 
 
 
