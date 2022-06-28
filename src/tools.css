@@ -1,5 +1,6 @@
 /* Tools page style section */
 
+
 .tools {
   width: 100%;
   position: relative;
@@ -38,6 +39,61 @@
   display: block;
 }
 
+
+.tools__topbar{
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem .5rem;  
+}
+.tools__btn{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: end;
+  /* margin: 0 auto; */
+
+}
+
+.tools__btn--active,.tools__btn--inactive{
+  background-color: #747474;
+  display: inline-block;
+  padding: 0.4rem 0.6rem;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  line-height: 2.1rem;
+  font-weight: normal;
+}
+.tools__btn--active{
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  padding-left: 1.1rem;
+}
+
+.tools__btn--inactive{
+  padding-right: 1.1rem;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+.tools__btn .show{
+  background-color: #0072bc;
+}
+
+.search-tool,.search-tool:focus,.search-tool:focus-within {
+  height: 2.7rem;
+  width: 25rem;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid #0072bc;
+  border-radius: 15px;
+  color: grey;
+  font-size: 1.6rem;
+
+}
+
+.search-tool::placeholder {
+/* padding-left: 21.5rem; */
+  opacity: .85;
+
+}
 /* ****************** Table ****************** */
 /* ****************** Table ****************** */
 

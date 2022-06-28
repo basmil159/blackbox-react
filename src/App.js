@@ -13,7 +13,7 @@ export const App = () => {
 
         <div
           className="wrapper__body"
-          style={{ position: "absolute", top: "8rem", width: "100%" }}
+          style={{ position: "absolute", top: "8rem", width: "100%", height: "calc(100vh - 8rem)" }}
         >
           <Sidebar />
           <Routes>

@@ -1,9 +1,28 @@
-import { Table } from "./Table";
+import React, { useState } from "react";
 import Pagination from "./Pagination";
-import { useState } from "react";
+import { Table } from "./Table";
+
+const ActiveTool = (props) => {
+  return(
+    <Table list={props.list} colName={props.colName} />
+    );
+  
+};
+
+const InactiveTool = (props) => {
+  return(
+    <Table list={props.list} colName={props.colName} />
+    );
+  
+};
+
+
+
 
 export const Tools = () => {
-  let list = [
+
+  // active tools list
+  let Activelist = [
     ["1", "img/info.png", "cutter M10", "140.000", "14.000"],
     ["2", "img/done.png", "drill Ak23", "130.030", "10.000"],
     ["3", "img/close.png", "Knife M10", "150.040", "11.000"],
@@ -18,29 +37,43 @@ export const Tools = () => {
     ["12", "img/warning.png", "pistol tr0", "142.000", "13.000"],
     ["13", "img/admin.png", "Jammer Z15", "540.560", "14.000"],
     ["14", "img/user.png", "Drill M10", "350.078", "15.000"],
-
     ["15", "img/close.png", "Knife M10", "150.040", "11.000"],
     ["16", "img/info.png", "Jammer M10", "140.020", "12.000"],
     ["17", "img/warning.png", "pistol tr0", "142.000", "13.000"],
     ["18", "img/admin.png", "Jammer Z15", "540.560", "14.000"],
     ["19", "img/user.png", "Drill M10", "350.078", "15.000"],
   ];
+
+  // inactive tools list
+  let Inactivelist = [
+    ["1", "img/info.png", "cutter M10", "140.000", "14.000"],
+    ["2", "img/done.png", "drill Ak23", "130.030", "10.000"],
+    ["3", "img/close.png", "Knife M10", "150.040", "11.000"],
+    ["4", "img/info.png", "Jammer M10", "140.020", "12.000"],
+    ["18", "img/admin.png", "Jammer Z15", "540.560", "14.000"],
+    ["19", "img/user.png", "Drill M10", "350.078", "15.000"],
+  ];
+
+  // Column name for tools table  list
   let colName = ["SN", "Type", "Tool Name", "Length", "Diameter"];
 
+  // This state is for controlling the paginations  
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(10);
-
+  
+  const [showActiveTools, setShowActiveTools] = useState(true);
+  const [selectList,setShowSelectList] = useState(Activelist);
+console.log(selectList);
   // getting exact number of pages required
-  let totalItems = list.length;
+  let totalItems = selectList.length;
   let pages = totalItems / itemsPerPage;
   if (totalItems % itemsPerPage !== 0 && pages > 1) {
     pages = Math.trunc(pages + 1);
   }
-  // getting current post
+  // getting current posts 
   const lastItemIndex = currentPage * itemsPerPage;
   const firstItemindex = lastItemIndex - itemsPerPage;
-  const currentItems = list.slice(firstItemindex, lastItemIndex);
-
+  const currentItems = selectList.slice(firstItemindex, lastItemIndex);
   // getting exact number of items for last page
   const pageItem = currentItems.length;
 
@@ -48,18 +81,43 @@ export const Tools = () => {
     setCurrentPage(pageNumber);
   };
 
+
+
   return (
     <section className="tools">
-      <Table list={currentItems} colName={colName} />
+      <div className="tools__topbar">
+        <input type="text" className="search-tool" placeholder="🔍" />
+      <div className="tools__btn">
+        <span className={showActiveTools ? 'tools__btn--active show' : 'tools__btn--active'} onClick={()=>{
+          setShowActiveTools(true);
+          setShowSelectList(Activelist);
+        }}>
+          Active 
+        </span>
+        <span className={!showActiveTools ? 'tools__btn--inactive show' : 'tools__btn--inactive'}  onClick={()=>{
+          setShowActiveTools(false);
+          setShowSelectList(Inactivelist);
+        }}>
+        Inactive
+        </span>
+      </div>
+      </div>
+      {showActiveTools && (<ActiveTool list={currentItems} colName={colName} />)}
+      {!showActiveTools && (
+      <InactiveTool list={currentItems} colName={colName} />) }
+      
+
       {pages > 1 && (
-        <Pagination
-          lastItem={firstItemindex + pageItem}
-          firstItem={firstItemindex}
-          totalItems={totalItems}
-          Pages={pages}
-          paginate={paginate}
-        />
+      <Pagination
+      lastItem={firstItemindex + pageItem}
+      firstItem={firstItemindex}
+      totalItems={totalItems}
+      Pages={pages}
+      paginate={paginate}
+      />
       )}
     </section>
   );
 };
+
+

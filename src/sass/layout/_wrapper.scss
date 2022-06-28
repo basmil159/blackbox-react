@@ -1,6 +1,6 @@
 .wrapper {
-  width: 100%vw;
-  height: 100%vh;
+  width: 100vw;
+  height: 100vh;
 
   display: flex;
   flex-direction: column;
@@ -8,5 +8,35 @@
   &__body {
     display: flex;
     flex-direction: row;
+    section:last-of-type{
+
+      scrollbar-color: #0072bc rgba(111, 171, 228, 0.493);
+      scrollbar-width: thin;
+      scroll-behavior: smooth;
+      overflow-y: scroll;
+      scroll-margin-block-start: 1px;
+      overflow-x: hidden;
+    
+      &::-webkit-scrollbar {
+        width: 13px;
+      }
+      
+      /* Track */
+      &::-webkit-scrollbar-track {
+        background: rgba(111, 171, 228, 0.493); 
+        border-radius: 15px;
+      }
+      
+      /* Handle */
+      &::-webkit-scrollbar-thumb {
+        background: #0071bcb7; 
+        border-radius: 15px;
+      }
+      
+      /* Handle on hover */
+      &::-webkit-scrollbar-thumb:hover {
+        background: #0072bc; 
+      }
   }
+}
 }
